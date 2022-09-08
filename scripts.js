@@ -35,5 +35,3 @@ function evaluateTerm(term){
     return "Not a valid term"
 
 }
-
-evaluateTerm("44 + 5")
