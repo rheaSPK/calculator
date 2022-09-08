@@ -1,3 +1,6 @@
+var term = ""
+var result = 0
+
 function add(a, b) {
     return a + b
 }
@@ -11,6 +14,9 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    if(b == 0){
+        return "Error"
+    }
     return Math.round((a / b) * 1000) / 1000
 }
 
@@ -36,8 +42,8 @@ function evaluateTerm(term){
 
 }
 
-var term = ""
-var result = 0
+
+
 const completeTermRegex = /^\-?\d+(\.\d+)?[\+\-\*\/]\-?\d+(\.\d+)?$/
 const changeableOperationRegex = /^\-?\d+(\.\d+)?[\+\-\*\/]$/
 const keys = document.querySelectorAll('.key')
@@ -59,7 +65,12 @@ operatorKeys.forEach((key) => {
     key.addEventListener('click', () => {
         if (completeTermRegex.test(term)){
             result = evaluateTerm(term)
-            term = `${result}${key.id}`
+            if(result == "Error"){
+                term = ""
+                result = "You can't divide by zero"
+            } else {
+                term = `${result}${key.id}`
+            }
             termDiv.textContent = term
             resultDiv.textContent = result
             return;
@@ -78,6 +89,9 @@ specialKeys.forEach((key) => {
     key.addEventListener('click', () => {
         if(key.id == "result"){
             result = evaluateTerm(term)
+            if(result == "Error"){
+                result = "You can't divide by zero"
+            }
             term = ""
             termDiv.textContent = term
             resultDiv.textContent = result
@@ -85,7 +99,9 @@ specialKeys.forEach((key) => {
         }
         if(key.id == "remove"){
             term = ""
+            result = ""
             termDiv.textContent = term
+            resultDiv.textContent = result
         }
     })
 })
