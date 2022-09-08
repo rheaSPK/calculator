@@ -35,3 +35,14 @@ function evaluateTerm(term){
     return "Not a valid term"
 
 }
+
+var term = ""
+const keys = document.querySelectorAll('.key')
+const termDiv = document.querySelector(".term")
+
+keys.forEach((key) => {
+    key.addEventListener('click', () => {
+        term += key.id
+        termDiv.textContent = term
+    })
+})

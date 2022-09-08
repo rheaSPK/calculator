@@ -56,6 +56,7 @@
     gap: 10px;
 }
 
+.special-key,
 .key {
     border-style: solid;
     flex: 1;
