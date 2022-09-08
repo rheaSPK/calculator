@@ -57,6 +57,7 @@
 }
 
 .special-key,
+.operator-key,
 .key {
     border-style: solid;
     flex: 1;
