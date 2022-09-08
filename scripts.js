@@ -73,3 +73,19 @@ operatorKeys.forEach((key) => {
         termDiv.textContent = term
     })
 })
+
+specialKeys.forEach((key) => {
+    key.addEventListener('click', () => {
+        if(key.id == "result"){
+            result = evaluateTerm(term)
+            term = ""
+            termDiv.textContent = term
+            resultDiv.textContent = result
+            return;
+        }
+        if(key.id == "remove"){
+            term = ""
+            termDiv.textContent = term
+        }
+    })
+})
